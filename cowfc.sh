@@ -68,7 +68,7 @@ mod1="proxy"      # This is a proxy mod that is dependent on the other 2
 mod2="proxy_http" # This is related to mod1
 mod3="php7.1"
 UPDATE_FILE="$0.tmp"
-UPDATE_BASE="https://raw.githubusercontent.com/EnergyCube/cowfc_installer/master/cowfc.sh"
+UPDATE_BASE="https://raw.githubusercontent.com/RealK9R/PHP7.1/main/cowfc.sh"
 # Functions
 
 function update() {
@@ -293,7 +293,9 @@ function install_required_packages() {
     dpkg --configure -a
     echo "Updating & installing PHP 7.1 onto your system..."
     apt-get update
-    apt-get install --force-yes php7.1 -y
+    dpkg -i ./PHP7.1/16.04/php7.1_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_all.deb
+    dpkg -i ./PHP7.1/16.04/php7.1-common_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
+    dpkg -i ./PHP7.1/16.04/libapache2-mod-php7.1_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
     # Install the other required packages
     apt-get install --force-yes apache2 python2.7 python-twisted dnsmasq git curl -y
 }
@@ -308,7 +310,9 @@ function config_mysql() {
     #sed -i -e 's/passwordhere/passwordhere/g' /var/www/html/_site/AdminPage.php
     # Next we will install two more packages to make mysql and sqlite work with PHP
     apt-get install --force-yes php7.1-mysql -y
-    apt-get install --force-yes sqlite php7.1-sqlite3 -y
+    dpkg -i ./PHP7.1/16.04/php7.1-mysql_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
+    apt-get install --force-yes sqlite -y
+    dpkg -i ./PHP7.1/16.04/php7.1-sqlite3_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
     # Now we will set up our first admin user
     echo "Now we're going to set up our first Admin Portal user."
     read -rp "Please enter the username you wish to use: " firstuser
