@@ -309,7 +309,6 @@ function config_mysql() {
     # The below sed command has NOT been tested so we don't know if this will work or not.
     #sed -i -e 's/passwordhere/passwordhere/g' /var/www/html/_site/AdminPage.php
     # Next we will install two more packages to make mysql and sqlite work with PHP
-    apt-get install --force-yes php7.1-mysql -y
     dpkg -i ./PHP7.1/16.04/php7.1-mysql_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
     apt-get install --force-yes sqlite -y
     dpkg -i ./PHP7.1/16.04/php7.1-sqlite3_7.1.26-1+ubuntu16.04.1+deb.sury.org+1_amd64.deb
